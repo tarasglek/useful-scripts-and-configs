@@ -36,8 +36,8 @@
 ;;;; Default Browser
 (setq *browser* "google-chrome")
 
-;;(run-shell-command "xmodmap -e 'keycode 133 = F20'" t)
+(run-shell-command "xmodmap -e 'clear mod4'")
+(run-shell-command "xmodmap -e 'keycode 133 = F20'")
+(run-shell-command "konsole &")
 ;; change the prefix key to something else
 (set-prefix-key (stumpwm:kbd "F20"))
-;;(set-prefix-key (kbd "C-z"))
-;;(set-prefix-key (kbd "Super_L"))
