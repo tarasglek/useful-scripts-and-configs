@@ -41,3 +41,12 @@
 (run-shell-command "konsole &")
 ;; change the prefix key to something else
 (set-prefix-key (stumpwm:kbd "F20"))
+;; https://gitlab.com/wavexx/acpilight/
+(defcommand brightness (value) ((:number "Adjust brightness: "))
+  "Increment brightness."
+  (let ((arg (if (plusp value) "-inc" "-dec")))
+    (run-shell-command (format nil "xbacklight ~a ~a" arg (abs value))))
+  (run-shell-command "xbacklight -get" t))
+
+(define-key *top-map* (kbd "XF86MonBrightnessUp") "brightness 10")
+(define-key *top-map* (kbd "XF86MonBrightnessDown") "brightness -10")
