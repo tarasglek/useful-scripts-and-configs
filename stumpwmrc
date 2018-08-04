@@ -23,6 +23,10 @@
   "PulseAudio Volume Control"
   (run-or-raise "pavucontrol" '(:class "Pavucontrol")))
 
+(defcommand lock-suspend () ()
+  "Suspend to ram"
+  (run-shell-command "i3lock -e -c 641E16 && sudo pm-suspend"))
+
 (define-key *root-map* (kbd "c") "chrome")
 (define-key *root-map* (kbd "k") "konsole")
 (define-key *root-map* (kbd "f") "firefox")
@@ -38,7 +42,6 @@
 
 (run-shell-command "xmodmap -e 'clear mod4'")
 (run-shell-command "xmodmap -e 'keycode 133 = F20'")
-(run-shell-command "konsole &")
 ;; change the prefix key to something else
 (set-prefix-key (stumpwm:kbd "F20"))
 ;; https://gitlab.com/wavexx/acpilight/
@@ -50,3 +53,5 @@
 
 (define-key *top-map* (kbd "XF86MonBrightnessUp") "brightness 10")
 (define-key *top-map* (kbd "XF86MonBrightnessDown") "brightness -10")
+
+(define-key *root-map* (kbd "L") "lock-suspend")
