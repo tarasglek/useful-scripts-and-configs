@@ -55,3 +55,13 @@
 (define-key *top-map* (kbd "XF86MonBrightnessDown") "brightness -10")
 
 (define-key *root-map* (kbd "L") "lock-suspend")
+
+(defcommand volume (value) ((:string "Adjust volume: "))
+  "adjust volume"
+  (run-shell-command  (format nil "pactl set-sink-volume @DEFAULT_SINK@ '~a%'" value))
+  (run-shell-command "pacmd list-sinks | grep 'volume: front'" t)
+  ;; (format nil "volume '~a%'" value)
+)
+
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "volume -5")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "volume +5")
