@@ -27,12 +27,17 @@
   "Suspend to ram"
   (run-shell-command "i3lock -e -c 641E16 && sudo pm-suspend"))
 
+(defcommand battery () ()
+  "battery"
+  (run-shell-command "upower -i `upower -e | grep BAT`" t))
+
 (define-key *root-map* (kbd "c") "chrome")
 (define-key *root-map* (kbd "k") "konsole")
 (define-key *root-map* (kbd "f") "firefox")
 (define-key *root-map* (kbd "v") "vs")
 (define-key *root-map* (kbd "p") "pavucontrol")
 (define-key *root-map* (kbd "F4") "delete-window")
+(define-key *root-map* (kbd "b") "battery")
 
 ;;;; Default terminal emulator
 (setq *terminal* "konsole")
