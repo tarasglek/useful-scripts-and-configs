@@ -50,6 +50,7 @@
 ;; change the prefix key to something else
 (set-prefix-key (stumpwm:kbd "F20"))
 ;; https://gitlab.com/wavexx/acpilight/
+;; sudo usermod -G video taras -a
 (defcommand brightness (value) ((:number "Adjust brightness: "))
   "Increment brightness."
   (let ((arg (if (plusp value) "-inc" "-dec")))
