@@ -31,6 +31,10 @@
   "battery"
   (run-shell-command "upower -i `upower -e | grep BAT`" t))
 
+(defcommand windowlist () ()
+  "Window list via rofi"
+  (run-shell-command "rofi -show combi -combi-modi window,drun -modi combi -width 50 -location 3   -yoffset -1"))
+
 (define-key *root-map* (kbd "c") "chrome")
 (define-key *root-map* (kbd "k") "konsole")
 (define-key *root-map* (kbd "f") "firefox")
@@ -38,6 +42,7 @@
 (define-key *root-map* (kbd "p") "pavucontrol")
 (define-key *root-map* (kbd "F4") "delete-window")
 (define-key *root-map* (kbd "b") "battery")
+(define-key *root-map* (kbd "w") "windowlist")
 
 ;;;; Default terminal emulator
 (setq *terminal* "konsole")
