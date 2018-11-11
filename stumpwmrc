@@ -43,7 +43,7 @@
 (define-key *root-map* (kbd "F4") "delete-window")
 (define-key *root-map* (kbd "b") "battery")
 (define-key *root-map* (kbd "w") "windowlist")
-
+(setf *mouse-focus-policy* :sloppy)
 ;;;; Default terminal emulator
 (setq *terminal* "konsole")
 
