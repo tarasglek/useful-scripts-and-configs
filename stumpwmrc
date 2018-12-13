@@ -52,7 +52,7 @@
 
 (run-shell-command "xmodmap -e 'clear mod4'")
 (run-shell-command "xmodmap -e 'keycode 133 = F20'")
-(run-shell-command "xmodmap -e 'ssh-add ~/.ssh/id_rsa'")
+(run-shell-command "ssh-add ~/.ssh/id_rsa")
 
 ;; change the prefix key to something else
 (set-prefix-key (stumpwm:kbd "F20"))
