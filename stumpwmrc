@@ -33,7 +33,7 @@
 
 (defcommand windowlist () ()
   "Window list via rofi"
-  (run-shell-command "rofi -show combi -combi-modi window,drun -modi combi -width 50 -location 3   -yoffset -1"))
+  (run-shell-command "rofi -show combi -combi-modi window,drun -modi combi -width 50 -location 3 -yoffset -1 -show-icons"))
 
 (define-key *root-map* (kbd "c") "chrome")
 (define-key *root-map* (kbd "k") "konsole")
