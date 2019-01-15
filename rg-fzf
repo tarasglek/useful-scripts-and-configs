@@ -1,0 +1,4 @@
+#!/bin/sh
+set +x +e
+export QUERY=$@
+rg -l $QUERY | fzf --preview "rg $QUERY -n --no-filename {} -C2 --color always"  --bind 'enter:execute(code {})'
