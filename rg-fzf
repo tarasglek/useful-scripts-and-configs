@@ -2,7 +2,7 @@
 import sys
 import subprocess
 
-s = """rg -l {cmd} | fzf --preview "rg {cmd} -n --no-filename {{}} -C2 --color always"  --bind 'enter:execute(code {{}})'""".format(
+s = """rg -l {cmd} | fzf --no-mouse --preview "rg {cmd} -n --no-filename {{}} -C2 --color always"  --bind 'enter:execute(code {{}})'""".format(
     cmd=" ".join(sys.argv[1:])
 )
 subprocess.call(s, shell=True)
