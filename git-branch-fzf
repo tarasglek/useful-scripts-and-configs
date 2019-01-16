@@ -1,2 +1,5 @@
 #!/bin/sh
-git for-each-ref  --sort=-committerdate  --format='%(refname)' |fzf --preview 'git log -p {} --color' +s |xargs -n1 git checkout --track
+git for-each-ref  --sort=-committerdate  --format='%(refname)' | \
+    sed 's:^refs/heads/::' | \
+    fzf --no-mouse --preview 'git log -p {} --color' +s | \
+    xargs -n1 git checkout
