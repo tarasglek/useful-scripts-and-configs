@@ -1,5 +1,5 @@
 #!/bin/sh
 git for-each-ref  --sort=-committerdate  --format='%(refname)' | \
     sed -e 's:^refs/heads/::' -e 's:^refs/remotes/origin/::' | uniq | \
-    fzf --no-mouse --preview 'git log -p {} --color' +s | \
+    fzf --no-mouse --preview 'git log -p {} --color --max-count=10' +s | \
     xargs -n1 git checkout
