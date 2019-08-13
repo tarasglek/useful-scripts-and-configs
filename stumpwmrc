@@ -13,7 +13,7 @@
 
 (defcommand firefox () ()
   "Start Firefox unless it is already running, in which case focus it."
-  (run-or-raise "~/firefox/firefox" '(:class "Nightly")))
+  (run-or-raise "brave-browser" '(:class "Brave-browser")))
 
 (defcommand vs () ()
   "Start VS Code unless it is already running, in which case focus it."
@@ -51,11 +51,11 @@
 (setq *browser* "google-chrome")
 
 (run-shell-command "xmodmap -e 'clear mod4'")
-(run-shell-command "xmodmap -e 'keycode 133 = F20'")
+(run-shell-command "xmodmap -e 'keycode 133 = Print'")
 (run-shell-command "ssh-add ~/.ssh/id_rsa")
 
 ;; change the prefix key to something else
-(set-prefix-key (stumpwm:kbd "F20"))
+(set-prefix-key (stumpwm:kbd "Print"))
 ;; https://gitlab.com/wavexx/acpilight/
 ;; sudo usermod -G video taras -a
 (defcommand brightness (value) ((:number "Adjust brightness: "))
