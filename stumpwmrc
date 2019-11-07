@@ -25,7 +25,7 @@
 
 (defcommand lock-suspend () ()
   "Suspend to ram"
-  (run-shell-command "i3lock -e -c 641E16 && sudo pm-suspend"))
+  (run-shell-command "i3lock -e -c 641E16 && systemctl suspend"))
 
 (defcommand battery () ()
   "battery"
