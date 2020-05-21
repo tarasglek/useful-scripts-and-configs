@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import subprocess
 import re
 import math
@@ -23,7 +24,10 @@ def execute():
         half = math.floor(len(history) / 2)
         med = history[half]
         newest = history[0]
-        print(f"ping:{newest[0]}/{med[0]}/{oldest[0]} droppped:{newest[1]}/{med[1]}/{oldest[1]}") 
+        output = f"{newest[0]}/{med[0]}/{oldest[0]}"
+        if newest[1] or med[1] or oldest[1]: 
+            output = output + f" droppped:{newest[1]}/{med[1]}/{oldest[1]}"
+        print(output) 
     popen.stdout.close()
     return_code = popen.wait()
     if return_code:
