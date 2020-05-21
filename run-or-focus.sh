@@ -3,9 +3,11 @@ set -x
 cmd=$1
 class=$2
 workspace=$3
-if i3-msg "[con_mark=$class] focus"| jq '.[0]'.success|grep false ; then
+running_cmd=`[ ! -z "$4" ] && echo $4 || echo $cmd`
+pid=`pidof $running_cmd`
+if [ -z "$pid" ]; then
     i3-msg "workspace $workspace"
-    $cmd &
-    xdotool search --sync --onlyvisible --class $class
-    i3-msg mark $class
+    $cmd
+else
+    i3-msg "[class=$class] focus"
 fi
