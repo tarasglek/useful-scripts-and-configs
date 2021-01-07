@@ -144,6 +144,11 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the sup-mail scratchpad window, if any.
+bindsym $mod+minus [class=.*] scratchpad show
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -183,7 +188,9 @@ bindsym $mod+g exec --no-startup-id /home/taras/Documents/stumpwmrc/run-or-focus
 bindsym Print exec mate-screenshot
 
 hide_edge_borders smart
-for_window [class="zoom"] floating disable
+#for_window [class="zoom"] floating disable
+#for_window [class="zoom"] move scratchpad
 for_window [class="Kazam"] floating disable
 bindsym $mod+w exec --no-startup-id rofi -show combi -combi-modi window#drun -modi combi -width 50 -location 3 -yoffset -1 -show-icons 
 bindsym $mod+Tab workspace back_and_forth
+no_focus [class="feh"]

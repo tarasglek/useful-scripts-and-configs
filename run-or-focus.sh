@@ -9,5 +9,5 @@ if [ -z "$pid" ]; then
     i3-msg "workspace $workspace"
     $cmd
 else
-    i3-msg "[class=$class] focus"
+    i3-msg "[class=$class tiling] focus"
 fi
