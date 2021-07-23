@@ -137,6 +137,12 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# move workspaces
+bindsym $mod+Mod1+Up move workspace to output up
+
+
+bindsym $mod+Mod1+Down move workspace to output down
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -180,6 +186,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 # bar { status_command i3status }
 bindsym $mod+b exec --no-startup-id /home/taras/Documents/stumpwmrc/run-or-focus.sh "systemd-run --user --scope -p MemoryLimit=8G brave-browser" Brave-browser 1 brave
+#bindsym $mod+c exec --no-startup-id /home/taras/Documents/stumpwmrc/run-or-focus.sh "systemd-run --user --scope -p MemoryLimit=8G google-chrome --ignore-gpu-blacklist --enable-accelerated-video-decode" Google-chrome 4 chrome
 bindsym $mod+c exec --no-startup-id /home/taras/Documents/stumpwmrc/run-or-focus.sh "systemd-run --user --scope -p MemoryLimit=8G google-chrome --proxy-server=socks5://localhost:4001 --ignore-gpu-blacklist --enable-accelerated-video-decode" Google-chrome 4 chrome
 bindsym $mod+k exec --no-startup-id /home/taras/Documents/stumpwmrc/run-or-focus.sh konsole konsole 2
 bindsym $mod+o exec --no-startup-id /home/taras/Documents/stumpwmrc/run-or-focus.sh code Code 3
