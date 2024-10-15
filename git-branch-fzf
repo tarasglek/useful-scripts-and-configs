@@ -2,7 +2,7 @@
 
 # Set initial fzf prefix from command-line argument (eg exact match) or default to an empty string
 if [ -n "$1" ]; then
-    INITIAL_FZF_PREFIX="'$1'"
+    INITIAL_FZF_PREFIX="'$1"
 else
     INITIAL_FZF_PREFIX=""
 fi
