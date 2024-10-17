@@ -1,6 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=StumpWM
-Comment=Login using StumpWM
-Exec=/home/taras/stumpwmrc/run-stump.sh
-Type=XSession
