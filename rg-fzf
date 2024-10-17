@@ -1,8 +1,12 @@
-#!/usr/bin/env python3
-import sys
-import subprocess
+# https://github.com/junegunn/fzf/issues/2789#issuecomment-2196524694
+# Usage: rgfzf [<rg SYNOPSIS>]
+function rgfzf {
+  command rg --color=always --line-number --no-heading --smart-case "${*:-}" \
+  | command fzf -d':' --ansi \
+    --preview "command bat -p --color=always {1} --highlight-line {2}" \
+    --preview-window ~8,+{2}-5 \
+    --bind 'enter:become(micro {1} +{2})' \
+  | awk -F':' '{print $1}'
+}
 
-s = """rg -l {cmd} | fzf --no-mouse --preview "rg {cmd} -n --no-filename {{}} -C2 --color always"  --bind 'enter:execute(code {{}})'""".format(
-    cmd=" ".join(sys.argv[1:])
-)
-subprocess.call(s, shell=True)
+rgfzf $@ 
