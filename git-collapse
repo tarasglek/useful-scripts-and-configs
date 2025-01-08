@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Function to show help
+show_help() {
+    echo "Usage: $(basename $0) [options] [git-log-options]"
+    echo
+    echo "Options:"
+    echo "  --help     Show this help message"
+    echo "  --preview  Show commits that would be collapsed without making changes"
+    echo
+    echo "When using --preview, any additional arguments are passed directly to git-log."
+    echo "For example, these git-log options can be used:"
+    echo "  --oneline     Show compact single-line logs"
+    echo "  --name-only   Show only names of changed files"
+    echo "  --stat        Show diffstat summary of changes"
+    echo "  -p            Show full diff patches"
+    echo
+    echo "Examples:"
+    echo "  $(basename $0) --preview            # Show commits to be collapsed"
+    echo "  $(basename $0) --preview --oneline  # Show commits in compact format"
+    echo "  $(basename $0) --preview --name-only # Show only changed files"
+    echo "  $(basename $0) --preview --stat     # Show change statistics"
+    echo "  $(basename $0)                      # Collapse commits"
+    exit 0
+}
+
+# Get the current branch
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Find the merge base with 'main'
+MERGE_BASE=$(git merge-base main $CURRENT_BRANCH)
+
+# Check for help flag
+if [ "$1" = "--help" ]; then
+    show_help
+fi
+
+# If --preview flag is present, show the log and exit
+if [ "$1" = "--preview" ]; then
+    git log ${@:2} $MERGE_BASE..HEAD
+    exit 0
+fi
+
+# Reset to the merge base
+git reset --soft $MERGE_BASE
+
+# Commit all changes
+git commit -m "Collapsed commits from merge base"
